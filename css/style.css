@@ -6,6 +6,11 @@
   --hover-color: #feca57;
   --border-color: #2e2e2e;
   --background-color: #f5f6fa;
+  --grey-color: #dfdfdf;
+  --primary-color: #3498db;
+  --secondary-color: #9b59b6;
+  --accent-color: #e74c3c;
+  --highlight-color: #f1c40f;
 }
 
 *,
@@ -18,7 +23,11 @@ body {
   margin: 0;
   font-family: "Arial", sans-serif;
   height: 100vh;
-  background-color: var(--background-color);
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
 }
 
 h1 {
@@ -26,6 +35,7 @@ h1 {
   font-size: 4rem;
   color: var(--border-color);
   margin-bottom: 2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .game {
@@ -35,6 +45,7 @@ h1 {
   align-content: center;
   align-items: center;
   height: 100%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .scoreboard-container {
@@ -52,11 +63,13 @@ h1 {
 .scoreboard h2 {
   margin: 0;
   font-size: 24px;
+  color: var(--accent-color);
 }
 
 .scoreboard p {
   font-size: 48px;
   margin: 10px 0 0;
+  color: var(--highlight-color);
 }
 
 .board {
@@ -94,14 +107,14 @@ h1 {
   justify-content: center;
   align-items: center;
   font-size: 3em;
-  background-color: white;
-  transition: background-color 0.3s, transform 0.2s;
+  background-color: var(--grey-color);
+  transition: var(--background-color) 0.3s, transform 0.2s;
   cursor: pointer;
 }
 
 .cell:hover {
-  background-color: var(--hover-color);
-  box-shadow: 0 0 10px var(--hover-color);
+  background-color: var(--background-color);
+  box-shadow: 0 0 10px var(--background-color);
   transform: scale(1.05);
 }
 
@@ -164,12 +177,24 @@ h1 {
 .board.o .cell:not(.x):not(.o):hover::after {
   width: calc(var(--mark-size) * 0.75);
   height: calc(var(--mark-size) * 0.75);
-  background-color: var(--hover-color);
+  background-color: var(--background-color);
+  box-shadow: 0 0 10px var(--background-color);
+}
+
+.cell.o::after {
+  width: calc(var(--mark-size) * 0.75);
+  height: calc(var(--mark-size) * 0.75);
+  background-color: var(--background-color);
+  box-shadow: 0 0 10px var(--background-color);
+}
+
+.cell.o.clicked::after {
+  background-color: white;
 }
 
 .cell.o::after,
 .board.o .cell.o::after:hover {
-  background-color: var(--hover-color);
+  background-color: var(--background-color);
 }
 
 .winning-message {

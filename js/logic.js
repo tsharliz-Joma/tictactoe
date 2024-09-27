@@ -56,6 +56,7 @@ const endGame = (draw) => {
   }
   winningMessageElement.classList.add("show");
 };
+
 const setBoardHoverClass = () => {
   board.classList.remove(X_CLASS);
   board.classList.remove(CIRCLE_CLASS);
